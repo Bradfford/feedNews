@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class NewsTableViewCell: UITableViewCell {
 
@@ -30,7 +31,19 @@ class NewsTableViewCell: UITableViewCell {
         
         lbTitle.text = article.title
         lbDescription.text = article.description
+        setImage(url: article.urlToImage)
+    }
+    
+    func setImage(url: String){
         
+        let urlImage = url
+        let resource = ImageResource(downloadURL: URL(string: urlImage)!, cacheKey: urlImage)
+        ivImage.kf.setImage(with: resource, options: nil) {
+            (image, error, cacheType, urlImage) in
+            if let downloadedImage = image {
+                //TODO remover loading image
+            }
+        }
     }
 
 }
