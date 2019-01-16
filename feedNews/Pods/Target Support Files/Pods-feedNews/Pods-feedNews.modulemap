@@ -1,0 +1,6 @@
+framework module Pods_feedNews {
+  umbrella header "Pods-feedNews-umbrella.h"
+
+  export *
+  module * { export * }
+}
