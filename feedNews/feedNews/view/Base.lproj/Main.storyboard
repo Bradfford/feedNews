@@ -18,55 +18,90 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G18-hG-AcH">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G18-hG-AcH">
                                 <rect key="frame" x="0.0" y="74" width="375" height="593"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="newsCell" rowHeight="133" id="WvR-lS-vBc" customClass="NewsTableViewCell" customModule="feedNews" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="133"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="newsCell" rowHeight="197" id="WvR-lS-vBc" customClass="NewsTableViewCell" customModule="feedNews" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="197"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WvR-lS-vBc" id="TDH-oH-u6q">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="132.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="197"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="il0-L7-bvX">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="il0-L7-bvX">
                                                     <rect key="frame" x="10" y="8" width="160" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="160" id="MXA-2Z-Mb5"/>
                                                         <constraint firstAttribute="height" constant="100" id="cTq-QG-0P7"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reservas totais da CVC crescem 30,8% no 3º trimestre" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gdp-mB-9jD">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reservas totais da CVC crescem 30,8% no 3º trimestre" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gdp-mB-9jD">
                                                     <rect key="frame" x="180" y="8" width="170" height="57.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                     <color key="textColor" red="0.70994606599999999" green="0.077465487789999996" blue="0.11659328519999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KR0-Wu-e6L">
-                                                    <rect key="frame" x="180" y="70.5" width="170" height="29"/>
+                                                    <rect key="frame" x="20" y="113" width="345" height="73"/>
                                                     <string key="text">A operadora de turismo CVC anunciou nesta quinta-feira que as reservas confirmadas somaram 3,48 bilhões de reais no terceiro trimestre</string>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                     <color key="textColor" red="0.70994606599999999" green="0.077465487789999996" blue="0.11659328519999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Awy-6c-aKr">
+                                                    <rect key="frame" x="10" y="191" width="355" height="1"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="D92-Xo-M4O"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="KR0-Wu-e6L" secondAttribute="bottom" constant="8" id="2OB-0Q-qCX"/>
+                                                <constraint firstItem="Awy-6c-aKr" firstAttribute="top" secondItem="KR0-Wu-e6L" secondAttribute="bottom" constant="5" id="5yg-am-xJu"/>
+                                                <constraint firstItem="Awy-6c-aKr" firstAttribute="leading" secondItem="TDH-oH-u6q" secondAttribute="leading" constant="10" id="8J8-Fp-INe"/>
+                                                <constraint firstItem="KR0-Wu-e6L" firstAttribute="leading" secondItem="TDH-oH-u6q" secondAttribute="leading" constant="20" id="Bei-og-Zsu"/>
                                                 <constraint firstItem="Gdp-mB-9jD" firstAttribute="top" secondItem="TDH-oH-u6q" secondAttribute="top" constant="8" id="Dhg-6N-GP4"/>
-                                                <constraint firstItem="KR0-Wu-e6L" firstAttribute="leading" secondItem="il0-L7-bvX" secondAttribute="trailing" constant="10" id="N3z-j1-khs"/>
-                                                <constraint firstItem="KR0-Wu-e6L" firstAttribute="top" secondItem="Gdp-mB-9jD" secondAttribute="bottom" constant="5" id="N4k-yA-dMw"/>
+                                                <constraint firstAttribute="trailing" secondItem="KR0-Wu-e6L" secondAttribute="trailing" constant="10" id="bdx-gD-HA7"/>
                                                 <constraint firstItem="Gdp-mB-9jD" firstAttribute="leading" secondItem="il0-L7-bvX" secondAttribute="trailing" constant="10" id="brd-4H-62j"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Gdp-mB-9jD" secondAttribute="trailing" constant="10" id="fNA-5g-Ptn"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="KR0-Wu-e6L" secondAttribute="trailing" constant="10" id="gGu-Qb-otb"/>
                                                 <constraint firstItem="il0-L7-bvX" firstAttribute="top" secondItem="TDH-oH-u6q" secondAttribute="top" constant="8" id="hLD-q0-TFr"/>
+                                                <constraint firstAttribute="bottom" secondItem="Awy-6c-aKr" secondAttribute="bottom" constant="5" id="qH6-PH-jZ5"/>
+                                                <constraint firstItem="KR0-Wu-e6L" firstAttribute="top" secondItem="il0-L7-bvX" secondAttribute="bottom" constant="5" id="uRO-GC-VOY"/>
+                                                <constraint firstAttribute="trailing" secondItem="Awy-6c-aKr" secondAttribute="trailing" constant="10" id="uc2-T0-2k8"/>
                                                 <constraint firstItem="il0-L7-bvX" firstAttribute="leading" secondItem="TDH-oH-u6q" secondAttribute="leading" constant="10" id="wId-ng-Viw"/>
-                                                <constraint firstAttribute="bottom" secondItem="il0-L7-bvX" secondAttribute="bottom" constant="8" id="xXp-pg-Cd2"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="ivImage" destination="il0-L7-bvX" id="hBm-Kd-UD0"/>
                                             <outlet property="lbDescription" destination="KR0-Wu-e6L" id="jh4-wi-awF"/>
                                             <outlet property="lbTitle" destination="Gdp-mB-9jD" id="6iv-Ta-ocW"/>
+                                            <outlet property="vwSeparator" destination="Awy-6c-aKr" id="9cw-o5-Umt"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="errorCell" rowHeight="133" id="BcT-CU-xnQ" customClass="NewsTableViewCell" customModule="feedNews" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="225" width="375" height="133"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BcT-CU-xnQ" id="nzM-oX-UQJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="133"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ops! Algo de errado aconteceu. Recarregue a página." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ers-a2-5d8">
+                                                    <rect key="frame" x="10" y="45" width="355" height="78"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ers-a2-5d8" firstAttribute="leading" secondItem="nzM-oX-UQJ" secondAttribute="leading" constant="10" id="321-jY-6fG"/>
+                                                <constraint firstAttribute="bottom" secondItem="ers-a2-5d8" secondAttribute="bottom" constant="10" id="LEX-0o-J1K"/>
+                                                <constraint firstAttribute="trailing" secondItem="ers-a2-5d8" secondAttribute="trailing" constant="10" id="Pxc-WK-bWG"/>
+                                                <constraint firstItem="ers-a2-5d8" firstAttribute="top" secondItem="nzM-oX-UQJ" secondAttribute="top" constant="45" id="UAw-9d-6Rj"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lbErrorMessage" destination="ers-a2-5d8" id="0NV-rv-Kma"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -85,7 +120,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Feed News" id="HHa-Vd-9Dj"/>
+                    <navigationItem key="navigationItem" title="Feed News" id="HHa-Vd-9Dj">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="JPd-FD-cMc">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="refreshFeed:" destination="BYZ-38-t0r" id="WFu-R8-VC5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="feedNewsTableView" destination="G18-hG-AcH" id="NLy-6O-KWC"/>
                         <segue destination="pnl-eJ-rKE" kind="show" id="9yj-EG-P00"/>
@@ -107,32 +149,30 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K41-bQ-9y4">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1230.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="428"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qDz-lW-smP">
-                                                <rect key="frame" x="10" y="10" width="355" height="91"/>
+                                                <rect key="frame" x="10" y="20" width="355" height="91"/>
                                                 <string key="text">A operadora de turismo CVC anunciou nesta quinta-feira que as reservas confirmadas somaram 3,48 bilhões de reais no terceiro trimestre</string>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hp2-EX-qlD">
-                                                <rect key="frame" x="10" y="109" width="355" height="160"/>
-                                                <color key="backgroundColor" red="0.32974817769999998" green="0.62872779190000005" blue="0.24682896830000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hp2-EX-qlD">
+                                                <rect key="frame" x="10" y="126" width="355" height="200"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="355" id="Jfo-U7-Bco"/>
-                                                    <constraint firstAttribute="height" constant="160" id="cdm-35-fVt"/>
+                                                    <constraint firstAttribute="height" constant="200" id="cdm-35-fVt"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="https://extra.globo.com/noticias/economia/reservas-totais-da-cvc-crescem-308-no-3-trimestre-23128399.html" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ze4-5Z-sBd">
-                                                <rect key="frame" x="10" y="279" width="355" height="54"/>
+                                                <rect key="frame" x="10" y="336" width="355" height="54"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                                 <color key="textColor" red="0.32974817769999998" green="0.62872779190000005" blue="0.24682896830000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAf-IF-dQr">
-                                                <rect key="frame" x="10" y="343" width="355" height="877.5"/>
-                                                <string key="text">SÃO PAULO (Reuters) - A operadora de turismo CVC anunciou nesta quinta-feira que as reservas confirmadas somaram 3,48 bilhões de reais no terceiro trimestre. Em totais, o número representa um aumento de 30,8 por cento ante mesma etapa de 2017. Na comparação pró-forma, que desconsidera eventos não recorrentes, o aumento foi de 10,8 por cento, também ano a ano. Por segmentos, as reservas totais de lazer cresceram 10,8 por cento ano a ano. Já as reservas do segmento de viagens corporativas cresceram 3,4 por cento contra um ano antes, 'perdendo um pouco o fôlego do início do ano em função das incertezas políticas e econômicas que via de regra afetam o setor de viagens a negócio'. Segundo a CVC, essa evolução 'confirmou a expectativa de que os impactos gerados pela greve dos caminhoneiros, pela desvalorização cambial e efeitos da Copa do Mundo eram temporários e não representavam mudança de tendência'. No ano até setembro, o crescimento das reservas confirmadas foi de 9,7 por cento, para 9,72 bilhões de reais. De julho a setembro, a CVC anunciou a compra de três empresas: a Esferatur e os argentinos Grupo Bibam e Ola Transatlántica.SÃO PAULO (Reuters) - A operadora de turismo CVC anunciou nesta quinta-feira que as reservas confirmadas somaram 3,48 bilhões de reais no terceiro trimestre. Em totais, o número representa um aumento de 30,8 por cento ante mesma etapa de 2017. Na comparação pró-forma, que desconsidera eventos não recorrentes, o aumento foi de 10,8 por cento, também ano a ano. Por segmentos, as reservas totais de lazer cresceram 10,8 por cento ano a ano. Já as reservas do segmento de viagens corporativas cresceram 3,4 por cento contra um ano antes, 'perdendo um pouco o fôlego do início do ano em função das incertezas políticas e econômicas que via de regra afetam o setor de viagens a negócio'. Segundo a CVC, essa evolução 'confirmou a expectativa de que os impactos gerados pela greve dos caminhoneiros, pela desvalorização cambial e efeitos da Copa do Mundo eram temporários e não representavam mudança de tendência'. No ano até setembro, o crescimento das reservas confirmadas foi de 9,7 por cento, para 9,72 bilhões de reais. De julho a setembro, a CVC anunciou a compra de três empresas: a Esferatur e os argentinos Grupo Bibam e Ola Transatlántica.</string>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content Text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAf-IF-dQr">
+                                                <rect key="frame" x="10" y="400" width="355" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -140,7 +180,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="qDz-lW-smP" firstAttribute="top" secondItem="K41-bQ-9y4" secondAttribute="top" constant="10" id="6Mv-Sa-gf8"/>
+                                            <constraint firstItem="qDz-lW-smP" firstAttribute="top" secondItem="K41-bQ-9y4" secondAttribute="top" constant="20" id="6Mv-Sa-gf8"/>
                                             <constraint firstItem="qDz-lW-smP" firstAttribute="leading" secondItem="K41-bQ-9y4" secondAttribute="leading" constant="10" id="LLm-Uh-rnk"/>
                                             <constraint firstAttribute="trailing" secondItem="ze4-5Z-sBd" secondAttribute="trailing" constant="10" id="P4V-7c-qAq"/>
                                             <constraint firstAttribute="trailing" secondItem="hp2-EX-qlD" secondAttribute="trailing" constant="10" id="Q40-ox-yRP"/>
@@ -149,7 +189,7 @@
                                             <constraint firstItem="hp2-EX-qlD" firstAttribute="leading" secondItem="K41-bQ-9y4" secondAttribute="leading" constant="10" id="X5o-vb-Hya"/>
                                             <constraint firstItem="FAf-IF-dQr" firstAttribute="leading" secondItem="K41-bQ-9y4" secondAttribute="leading" constant="10" id="XaR-Bw-c3e"/>
                                             <constraint firstItem="FAf-IF-dQr" firstAttribute="top" secondItem="ze4-5Z-sBd" secondAttribute="bottom" constant="10" id="cpK-gH-E9a"/>
-                                            <constraint firstItem="hp2-EX-qlD" firstAttribute="top" secondItem="qDz-lW-smP" secondAttribute="bottom" constant="8" id="hpa-nj-mPT"/>
+                                            <constraint firstItem="hp2-EX-qlD" firstAttribute="top" secondItem="qDz-lW-smP" secondAttribute="bottom" constant="15" id="hpa-nj-mPT"/>
                                             <constraint firstAttribute="trailing" secondItem="qDz-lW-smP" secondAttribute="trailing" constant="10" id="jHt-or-uKy"/>
                                             <constraint firstAttribute="trailing" secondItem="FAf-IF-dQr" secondAttribute="trailing" constant="10" id="tPS-xg-rtn"/>
                                             <constraint firstItem="ze4-5Z-sBd" firstAttribute="top" secondItem="hp2-EX-qlD" secondAttribute="bottom" constant="10" id="wLi-mk-78D"/>
@@ -175,6 +215,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yGI-I1-YSN"/>
                     </view>
+                    <connections>
+                        <outlet property="ivImage" destination="hp2-EX-qlD" id="fQl-2q-QIQ"/>
+                        <outlet property="lbContent" destination="FAf-IF-dQr" id="gRP-4P-OYE"/>
+                        <outlet property="lbDescription" destination="qDz-lW-smP" id="vYe-NF-NxX"/>
+                        <outlet property="lbUrl" destination="ze4-5Z-sBd" id="WTs-WM-kMv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cLe-qF-jek" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

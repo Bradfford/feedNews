@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5100D96021F00AEA001961FC /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5100D95F21F00AEA001961FC /* Animations.swift */; };
+		5100D96221F00B87001961FC /* Designable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5100D96121F00B87001961FC /* Designable.swift */; };
+		5100D96421F01068001961FC /* preloader.json in Resources */ = {isa = PBXBuildFile; fileRef = 5100D96321F01068001961FC /* preloader.json */; };
+		5100D96A21F01BBD001961FC /* spinner_.json in Resources */ = {isa = PBXBuildFile; fileRef = 5100D96921F01BBC001961FC /* spinner_.json */; };
+		5100D96E21F03AAC001961FC /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5100D96D21F03AAC001961FC /* Reachability.swift */; };
 		5127175C21EEB47400ACEA1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5127175B21EEB47400ACEA1B /* AppDelegate.swift */; };
 		5127175E21EEB47400ACEA1B /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5127175D21EEB47400ACEA1B /* FeedViewController.swift */; };
 		5127176121EEB47400ACEA1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5127175F21EEB47400ACEA1B /* Main.storyboard */; };
@@ -49,6 +54,11 @@
 /* Begin PBXFileReference section */
 		06238E03C640206968787ADB /* Pods_feedNews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_feedNews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E4F4F2404F88E3719B85F81 /* Pods-feedNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-feedNews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-feedNews/Pods-feedNews.debug.xcconfig"; sourceTree = "<group>"; };
+		5100D95F21F00AEA001961FC /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
+		5100D96121F00B87001961FC /* Designable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Designable.swift; sourceTree = "<group>"; };
+		5100D96321F01068001961FC /* preloader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = preloader.json; sourceTree = "<group>"; };
+		5100D96921F01BBC001961FC /* spinner_.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = spinner_.json; sourceTree = "<group>"; };
+		5100D96D21F03AAC001961FC /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		5127175821EEB47400ACEA1B /* feedNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = feedNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5127175B21EEB47400ACEA1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5127175D21EEB47400ACEA1B /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +130,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5100D95E21F00A84001961FC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5100D96321F01068001961FC /* preloader.json */,
+				5100D96921F01BBC001961FC /* spinner_.json */,
+				5100D95F21F00AEA001961FC /* Animations.swift */,
+				5100D96121F00B87001961FC /* Designable.swift */,
+				5100D96D21F03AAC001961FC /* Reachability.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		5127174F21EEB47300ACEA1B = {
 			isa = PBXGroup;
 			children = (
@@ -145,7 +167,8 @@
 		5127175A21EEB47400ACEA1B /* feedNews */ = {
 			isa = PBXGroup;
 			children = (
-				5127179621EECDB100ACEA1B /* interactor */,
+				5100D95E21F00A84001961FC /* Utils */,
+				5127179621EECDB100ACEA1B /* business */,
 				5127178F21EEB57500ACEA1B /* model */,
 				5127178E21EEB56E00ACEA1B /* view */,
 				5127178D21EEB56200ACEA1B /* router */,
@@ -212,12 +235,12 @@
 			path = model;
 			sourceTree = "<group>";
 		};
-		5127179621EECDB100ACEA1B /* interactor */ = {
+		5127179621EECDB100ACEA1B /* business */ = {
 			isa = PBXGroup;
 			children = (
 				5127179721EECDF200ACEA1B /* FeedInteractor.swift */,
 			);
-			path = interactor;
+			path = business;
 			sourceTree = "<group>";
 		};
 		5127179921EECE1200ACEA1B /* service */ = {
@@ -357,6 +380,8 @@
 			files = (
 				51B28FC921EF59B00000664F /* SplashScreen.storyboard in Resources */,
 				51B28FCD21EF5CF60000664F /* LaunchScreen.storyboard in Resources */,
+				5100D96A21F01BBD001961FC /* spinner_.json in Resources */,
+				5100D96421F01068001961FC /* preloader.json in Resources */,
 				5127176621EEB47600ACEA1B /* Assets.xcassets in Resources */,
 				5127176121EEB47400ACEA1B /* Main.storyboard in Resources */,
 			);
@@ -439,11 +464,14 @@
 				5127175E21EEB47400ACEA1B /* FeedViewController.swift in Sources */,
 				51B28FCB21EF5A9E0000664F /* SplashScreenViewController.swift in Sources */,
 				5127176421EEB47400ACEA1B /* feedNews.xcdatamodeld in Sources */,
+				5100D96E21F03AAC001961FC /* Reachability.swift in Sources */,
 				512717A521EED76000ACEA1B /* Source.swift in Sources */,
+				5100D96021F00AEA001961FC /* Animations.swift in Sources */,
 				5127179821EECDF200ACEA1B /* FeedInteractor.swift in Sources */,
 				5127179D21EECE7A00ACEA1B /* FeedNews.swift in Sources */,
 				512717A321EED74000ACEA1B /* Articles.swift in Sources */,
 				5127179521EEC7F300ACEA1B /* DetailsViewController.swift in Sources */,
+				5100D96221F00B87001961FC /* Designable.swift in Sources */,
 				5127179121EEB9EC00ACEA1B /* NewsTableViewCell.swift in Sources */,
 				512717A921EEDF5900ACEA1B /* ServiceObject.swift in Sources */,
 				5127175C21EEB47400ACEA1B /* AppDelegate.swift in Sources */,

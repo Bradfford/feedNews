@@ -14,11 +14,16 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var lbTitle: UILabel!
     @IBOutlet weak var lbDescription: UILabel!
     @IBOutlet weak var ivImage: UIImageView!
+    @IBOutlet weak var vwSeparator: UIView!
+    
+    @IBOutlet weak var lbErrorMessage: UILabel!
+    
+    private var animations = AnimationEffects()
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -27,23 +32,30 @@ class NewsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func prepareCell(_ article: ArticlesViewData) {
+    func prepareSuccessCell(_ article: ArticlesViewData, isLastRow: Bool) {
         
         lbTitle.text = article.title
         lbDescription.text = article.description
         setImage(url: article.urlToImage)
+        if isLastRow{
+            vwSeparator.isHidden = true
+        }
     }
     
     func setImage(url: String){
-        
         let urlImage = url
         let resource = ImageResource(downloadURL: URL(string: urlImage)!, cacheKey: urlImage)
-        ivImage.kf.setImage(with: resource, options: nil) {
+        self.animations.createLoadingInImageView(imageView: ivImage, jsonName: "spinner_")
+        self.ivImage.kf.setImage(with: resource, options: nil) {
             (image, error, cacheType, urlImage) in
-            if let downloadedImage = image {
-                //TODO remover loading image
+            if let _ = image {
+                self.animations.removeImageViewLoading(imageView: self.ivImage)
             }
         }
+    }
+    
+    func prepareErrorCell(){
+        self.lbErrorMessage.text = "Ops!\n Algo de errado aconteceu.\n Recarregue a página."
     }
 
 }

@@ -33,13 +33,17 @@ struct SourceViewData {
 
 //MARK: PRESENTER DELEGATE
 protocol FeedPresenterDelegate: NSObjectProtocol {
+    func startLoading()
+    func finishLoading()
+    func showEmptyListAlert()
+    func showRequestError()
     func showFeedNews(_ viewData: FeedViewData)
 }
 
 //MARK: PRESENTER CLASS
 class FeedPresenter {
     
-    private var feedViewData = FeedViewData()
+    private var feedViewData: FeedViewData!
     private let feedInteractor = FeedInteractor()
     private var feedNewsDelegate: FeedPresenterDelegate!
     
@@ -52,15 +56,26 @@ class FeedPresenter {
 extension FeedPresenter {
     
     func getFeedNews(){
-        self.feedInteractor.getFeedNews(successCompletion: { (feedNews) in
-            if let viewData = self.parseToViewData(model: feedNews){
-                self.feedNewsDelegate?.showFeedNews(viewData)
-            } else {
-                
-            }
-        }, errorCompletion: { (error) in
-            
-        })
+        
+        if !Reachability.isConnectedToNetwork(){
+            self.feedNewsDelegate?.showRequestError()
+            return
+        }
+        
+        self.feedNewsDelegate?.startLoading()
+            self.feedInteractor.getFeedNews(successCompletion: { (feedNews) in
+                if let viewData = self.parseToViewData(model: feedNews){
+                    self.feedNewsDelegate?.finishLoading()
+                    self.feedNewsDelegate?.showFeedNews(viewData)
+                } else {
+                    self.feedNewsDelegate?.finishLoading()
+                    self.feedNewsDelegate?.showEmptyListAlert()
+                }
+            }, errorCompletion: { (error) in
+                self.feedNewsDelegate?.finishLoading()
+                self.feedNewsDelegate?.showRequestError()
+            })
+        
     }
 }
 
@@ -69,8 +84,10 @@ extension FeedPresenter {
     
     func parseToViewData(model: FeedNews?) -> FeedViewData? {
         if let feedNewsModel = model, let articlesModel = feedNewsModel.articles, !articlesModel.isEmpty {
+            self.feedViewData = FeedViewData()
             self.feedViewData.status = feedNewsModel.status ?? ""
             self.feedViewData.totalResults = feedNewsModel.totalResults ?? 0
+            //self.feedViewData.articles = [ArticlesViewData]()
             
             for article in articlesModel {
                 var articleViewData = ArticlesViewData()
