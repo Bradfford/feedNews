@@ -171,7 +171,6 @@
 				5127179621EECDB100ACEA1B /* business */,
 				5127178F21EEB57500ACEA1B /* model */,
 				5127178E21EEB56E00ACEA1B /* view */,
-				5127178D21EEB56200ACEA1B /* router */,
 				5127178C21EEB55700ACEA1B /* presenter */,
 				5127175B21EEB47400ACEA1B /* AppDelegate.swift */,
 				5127176521EEB47600ACEA1B /* Assets.xcassets */,
@@ -205,13 +204,6 @@
 				5127179221EEC59900ACEA1B /* FeedPresenter.swift */,
 			);
 			path = presenter;
-			sourceTree = "<group>";
-		};
-		5127178D21EEB56200ACEA1B /* router */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = router;
 			sourceTree = "<group>";
 		};
 		5127178E21EEB56E00ACEA1B /* view */ = {

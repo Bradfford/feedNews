@@ -30,12 +30,13 @@ class DetailsViewController: UIViewController {
     }
     
     func build(){
-        
         self.lbDescription.text = viewData.title
         self.lbUrl.text = viewData.url
         self.lbContent.text = viewData.content
         setImage(url: viewData.urlToImage)
-        
+        let urlGesture = UITapGestureRecognizer(target: self, action: #selector(self.openUrl))
+        self.lbUrl.isUserInteractionEnabled = true
+        self.lbUrl.addGestureRecognizer(urlGesture)
     }
     
     func setImage(url: String){
@@ -45,6 +46,13 @@ class DetailsViewController: UIViewController {
         self.ivImage.kf.setImage(with: resource, options: nil) {
             (image, error, cacheType, urlImage) in
             self.animations.removeImageViewLoading(imageView: self.ivImage)
+        }
+    }
+    
+    @objc func openUrl(){
+        if let url = URL(string: viewData.url){
+            UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+            //UIApplication.shared.openURL(url as URL)
         }
     }
 }
