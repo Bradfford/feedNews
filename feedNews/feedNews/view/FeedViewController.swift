@@ -10,7 +10,9 @@ import UIKit
 
 class FeedViewController: UIViewController {
 
-    @IBOutlet weak var feedNewsTableView: UITableView!
+   @IBOutlet weak var feedNewsTableView: UITableView!
+    private let refreshControl = UIRefreshControl()
+
     private var feedPresenter: FeedPresenter!
     private var animations: AnimationEffects!
     private var feedNews = FeedViewData()
@@ -19,13 +21,12 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.feedPresenter = FeedPresenter(feedPresenterDelegate: self)
+        self.feedNewsTableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshWeatherData(_:)), for: .valueChanged)
         self.animations = AnimationEffects(self.view)
         self.build()
     }
-    
-    @IBAction func refreshFeed(_ sender: Any) {
-        self.build()
-    }
+
 }
 
 //MARK: TABLEVIEW DELEGATES
@@ -57,10 +58,16 @@ extension FeedViewController {
         feedPresenter.getFeedNews()
     }
     
+    @objc private func refreshWeatherData(_ sender: Any) {
+        self.build()
+        self.refreshControl.endRefreshing()
+    }
+    
     func setupCell(index: Int) -> NewsTableViewCell{
         if hasRequestError {
             let cell =  feedNewsTableView.dequeueReusableCell(withIdentifier: "errorCell") as! NewsTableViewCell
             cell.prepareErrorCell()
+            cell.newsTableViewCellDelegate = self
             return cell
         } else {
             let cell =  feedNewsTableView.dequeueReusableCell(withIdentifier: "newsCell") as! NewsTableViewCell
@@ -76,7 +83,7 @@ extension FeedViewController {
     
 }
 
-// MARK: PRESENTER DELEGATE
+// MARK: DELEGATES
 
 extension FeedViewController: FeedPresenterDelegate {
     
@@ -103,6 +110,13 @@ extension FeedViewController: FeedPresenterDelegate {
         self.feedNewsTableView.reloadData()
     }
 
+}
+
+extension FeedViewController: NewsTableViewCellDelegate {
+    func reloadData() {
+        build()
+    }
+    
 }
 
 
