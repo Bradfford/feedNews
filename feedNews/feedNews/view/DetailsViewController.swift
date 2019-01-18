@@ -15,17 +15,14 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var ivImage: UIImageView!
     @IBOutlet weak var lbUrl: UILabel!
     @IBOutlet weak var lbContent: UILabel!
+    @IBOutlet weak var lbAuthor: UILabel!
     
     var viewData = ArticlesViewData()
     private var animations = AnimationEffects()
-
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         build()
-
         // Do any additional setup after loading the view.
     }
     
@@ -33,10 +30,14 @@ class DetailsViewController: UIViewController {
         self.lbDescription.text = viewData.title
         self.lbUrl.text = viewData.url
         self.lbContent.text = viewData.content
+        self.lbAuthor.text = viewData.author 
         setImage(url: viewData.urlToImage)
         let urlGesture = UITapGestureRecognizer(target: self, action: #selector(self.openUrl))
         self.lbUrl.isUserInteractionEnabled = true
         self.lbUrl.addGestureRecognizer(urlGesture)
+        let urlImageGesture = UITapGestureRecognizer(target: self, action: #selector(self.openUrlImage))
+        self.ivImage.isUserInteractionEnabled = true
+        self.ivImage.addGestureRecognizer(urlImageGesture)
     }
     
     func setImage(url: String){
@@ -52,7 +53,12 @@ class DetailsViewController: UIViewController {
     @objc func openUrl(){
         if let url = URL(string: viewData.url){
             UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
-            //UIApplication.shared.openURL(url as URL)
+        }
+    }
+    
+    @objc func openUrlImage(){
+        if let url = URL(string: viewData.urlToImage){
+            UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
         }
     }
 }

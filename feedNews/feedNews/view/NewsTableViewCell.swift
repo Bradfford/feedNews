@@ -65,11 +65,10 @@ class NewsTableViewCell: UITableViewCell {
     }
     
     func prepareErrorCell(){
-        self.lbErrorMessage.text = "Ops!\n Algo de errado aconteceu.\n Recarregue a página."
+        self.lbErrorMessage.text = errorTextForCell
         UIView.animate(withDuration: 0.3) {
             self.ivReloadImage.transform = self.ivReloadImage.transform.rotated(by: CGFloat(Double.pi))
         }
-        
         let gesture = UITapGestureRecognizer(target: self, action: #selector(self.reloadData))
         self.vwContentView.addGestureRecognizer(gesture)
     }

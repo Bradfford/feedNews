@@ -35,8 +35,9 @@ struct SourceViewData {
 protocol FeedPresenterDelegate: NSObjectProtocol {
     func startLoading()
     func finishLoading()
-    func showEmptyListAlert()
-    func showRequestError()
+    func showEmptyListAlert(message: String)
+    func showRequestError(message: String)
+    func showConnectionError(message: String)
     func showFeedNews(_ viewData: FeedViewData)
 }
 
@@ -52,13 +53,19 @@ class FeedPresenter {
     }
 }
 
+enum Messages: String {
+    case connection_error = "Ops!\n Verifique sua conexão\n e recarregue a página."
+    case request_error = "Ops!\n Algo de errado aconteceu.\n Recarregue a página."
+    case emptylist_error = "Ops!\n Parece que não há informações \n a serem exibidas."
+}
+
 //MARK: CALL SERVICE
 extension FeedPresenter {
     
     func getFeedNews(){
         
         if !Reachability.isConnectedToNetwork(){
-            self.feedNewsDelegate?.showRequestError()
+            self.feedNewsDelegate?.showConnectionError(message: Messages.connection_error.rawValue)
             return
         }
         
@@ -69,11 +76,11 @@ extension FeedPresenter {
                     self.feedNewsDelegate?.showFeedNews(viewData)
                 } else {
                     self.feedNewsDelegate?.finishLoading()
-                    self.feedNewsDelegate?.showEmptyListAlert()
+                    self.feedNewsDelegate?.showEmptyListAlert(message: Messages.emptylist_error.rawValue)
                 }
             }, errorCompletion: { (error) in
                 self.feedNewsDelegate?.finishLoading()
-                self.feedNewsDelegate?.showRequestError()
+                self.feedNewsDelegate?.showRequestError(message: Messages.request_error.rawValue)
             })
         
     }
@@ -91,7 +98,7 @@ extension FeedPresenter {
             
             for article in articlesModel {
                 var articleViewData = ArticlesViewData()
-                articleViewData.author = article.author ?? ""
+                articleViewData.author = article.author ?? "Autor desconhecido"
                 articleViewData.title = article.title ?? ""
                 articleViewData.description = article.description ?? ""
                 articleViewData.url = article.url ?? ""
@@ -104,7 +111,7 @@ extension FeedPresenter {
                 
                 self.feedViewData.articles.append(articleViewData)
             }
-            return self.feedViewData
+            return nil
         }
         return nil
     }

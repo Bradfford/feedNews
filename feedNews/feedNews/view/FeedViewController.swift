@@ -16,7 +16,8 @@ class FeedViewController: UIViewController {
     private var feedPresenter: FeedPresenter!
     private var animations: AnimationEffects!
     private var feedNews = FeedViewData()
-    private var hasRequestError = false
+    private var hasError = false
+    private var errorMessage: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +42,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if !hasRequestError {
+        if !hasError {
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let detailsViewController = storyBoard.instantiateViewController(withIdentifier: "details") as! DetailsViewController
             detailsViewController.viewData = feedNews.articles[indexPath.row]
@@ -64,9 +65,10 @@ extension FeedViewController {
     }
     
     func setupCell(index: Int) -> NewsTableViewCell{
-        if hasRequestError {
+        if hasError {
             let cell =  feedNewsTableView.dequeueReusableCell(withIdentifier: "errorCell") as! NewsTableViewCell
             cell.prepareErrorCell()
+            cell.errorTextForCell = errorMessage
             cell.newsTableViewCellDelegate = self
             return cell
         } else {
@@ -78,7 +80,7 @@ extension FeedViewController {
     }
     
     func getCountOfRows() -> Int{
-        return hasRequestError ? 1 : feedNews.articles.count
+        return hasError ? 1 : feedNews.articles.count
     }
     
 }
@@ -86,6 +88,35 @@ extension FeedViewController {
 // MARK: DELEGATES
 
 extension FeedViewController: FeedPresenterDelegate {
+    
+    func showEmptyListAlert(message: String) {
+        self.errorMessage = validateMessage(message)
+        self.hasError = true
+        self.feedNewsTableView.reloadData()
+    }
+    
+    func showRequestError(message: String) {
+        self.errorMessage = validateMessage(message)
+        self.hasError = true
+        self.feedNewsTableView.reloadData()
+    }
+    
+    func showConnectionError(message: String) {
+        self.errorMessage = validateMessage(message)
+        self.hasError = true
+        self.feedNewsTableView.reloadData()
+    }
+    
+    func validateMessage(_ message: String) -> String {
+        if self.errorMessage != nil {
+            self.errorMessage.removeAll()
+            self.errorMessage = message
+        } else {
+            self.errorMessage = message
+        }
+        return self.errorMessage
+    }
+    
     
     func startLoading() {
         animations.showViewLoading(jsonName: "preloader")
@@ -95,18 +126,9 @@ extension FeedViewController: FeedPresenterDelegate {
         animations.removeViewLoading()
     }
     
-    func showEmptyListAlert() {
-    
-    }
-    
-    func showRequestError() {
-        self.hasRequestError = true
-        self.feedNewsTableView.reloadData()
-    }
-    
     func showFeedNews(_ feedNews: FeedViewData) {
         self.feedNews = feedNews
-        self.hasRequestError = false
+        self.hasError = false
         self.feedNewsTableView.reloadData()
     }
 
