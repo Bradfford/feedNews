@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class ServiceObject {
     
     var jsonObject: AnyObject?

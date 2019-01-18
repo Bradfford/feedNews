@@ -10,27 +10,36 @@ import UIKit
 import Kingfisher
 
 class DetailsViewController: UIViewController {
-
+    
+    //MARK: OUTLETS
+    @IBOutlet weak var lbPublishedDate: UILabel!
     @IBOutlet weak var lbDescription: UILabel!
     @IBOutlet weak var ivImage: UIImageView!
     @IBOutlet weak var lbUrl: UILabel!
     @IBOutlet weak var lbContent: UILabel!
     @IBOutlet weak var lbAuthor: UILabel!
     
+    //MARK: ATTRIBUTES
     var viewData = ArticlesViewData()
     private var animations = AnimationEffects()
     
+    //MARK: LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         build()
-        // Do any additional setup after loading the view.
     }
+
+}
+
+//MARK: AUXULIARY METHODS
+extension DetailsViewController {
     
     func build(){
+        self.lbPublishedDate.text = viewData.publishedAt
         self.lbDescription.text = viewData.title
         self.lbUrl.text = viewData.url
         self.lbContent.text = viewData.content
-        self.lbAuthor.text = viewData.author 
+        self.lbAuthor.text = viewData.author
         setImage(url: viewData.urlToImage)
         let urlGesture = UITapGestureRecognizer(target: self, action: #selector(self.openUrl))
         self.lbUrl.isUserInteractionEnabled = true

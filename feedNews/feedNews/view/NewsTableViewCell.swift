@@ -8,13 +8,16 @@
 
 import UIKit
 import Kingfisher
+import Lottie
 
+//MARK: PROTOCOL
 protocol NewsTableViewCellDelegate: NSObjectProtocol {
     func reloadData()
 }
 
 class NewsTableViewCell: UITableViewCell {
-
+    
+    //MARK: OUTLETS
     @IBOutlet weak var lbTitle: UILabel!
     @IBOutlet weak var lbDescription: UILabel!
     @IBOutlet weak var ivImage: UIImageView!
@@ -22,12 +25,14 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var vwContentView: UIView!
     @IBOutlet weak var lbErrorMessage: UILabel!
     @IBOutlet weak var ivReloadImage: UIImageView!
+    @IBOutlet weak var vwAnimation: LOTAnimationView!
     
+    //MARK: ATTRIBUTES
     private var animations = AnimationEffects()
     var newsTableViewCellDelegate: NewsTableViewCellDelegate!
     var errorTextForCell: String!
     
-    
+    //MARK: OVERRIDE METHODS
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -35,6 +40,11 @@ class NewsTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+}
+
+//MARK: AUXILIARY METHODS
+extension NewsTableViewCell{
     
     @objc func reloadData(){
         UIView.animate(withDuration: 0.2, animations: {
@@ -65,6 +75,7 @@ class NewsTableViewCell: UITableViewCell {
     }
     
     func prepareErrorCell(){
+        startAnimation()
         self.lbErrorMessage.text = errorTextForCell
         UIView.animate(withDuration: 0.3) {
             self.ivReloadImage.transform = self.ivReloadImage.transform.rotated(by: CGFloat(Double.pi))
@@ -72,5 +83,10 @@ class NewsTableViewCell: UITableViewCell {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(self.reloadData))
         self.vwContentView.addGestureRecognizer(gesture)
     }
-
+    
+    func startAnimation(){
+        vwAnimation.setAnimation(named: "wow")
+        vwAnimation.loopAnimation = true
+        vwAnimation.play()
+    }
 }

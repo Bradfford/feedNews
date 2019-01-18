@@ -10,15 +10,18 @@ import UIKit
 
 class FeedViewController: UIViewController {
 
+    //MARK: OUTLETS
    @IBOutlet weak var feedNewsTableView: UITableView!
+    
+    //MARK: ATTRIBUTES
     private let refreshControl = UIRefreshControl()
-
     private var feedPresenter: FeedPresenter!
     private var animations: AnimationEffects!
     private var feedNews = FeedViewData()
     private var hasError = false
     private var errorMessage: String!
     
+    //MARK: LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         self.feedPresenter = FeedPresenter(feedPresenterDelegate: self)
@@ -67,8 +70,8 @@ extension FeedViewController {
     func setupCell(index: Int) -> NewsTableViewCell{
         if hasError {
             let cell =  feedNewsTableView.dequeueReusableCell(withIdentifier: "errorCell") as! NewsTableViewCell
-            cell.prepareErrorCell()
             cell.errorTextForCell = errorMessage
+            cell.prepareErrorCell()
             cell.newsTableViewCellDelegate = self
             return cell
         } else {
@@ -86,7 +89,6 @@ extension FeedViewController {
 }
 
 // MARK: DELEGATES
-
 extension FeedViewController: FeedPresenterDelegate {
     
     func showEmptyListAlert(message: String) {

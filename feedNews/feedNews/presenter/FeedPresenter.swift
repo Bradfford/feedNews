@@ -31,7 +31,7 @@ struct SourceViewData {
     var name: String = ""
 }
 
-//MARK: PRESENTER DELEGATE
+//MARK: PROTOCOL
 protocol FeedPresenterDelegate: NSObjectProtocol {
     func startLoading()
     func finishLoading()
@@ -41,9 +41,9 @@ protocol FeedPresenterDelegate: NSObjectProtocol {
     func showFeedNews(_ viewData: FeedViewData)
 }
 
-//MARK: PRESENTER CLASS
 class FeedPresenter {
     
+    //MARK: ATTRIBUTES
     private var feedViewData: FeedViewData!
     private let feedInteractor = FeedInteractor()
     private var feedNewsDelegate: FeedPresenterDelegate!
@@ -53,6 +53,7 @@ class FeedPresenter {
     }
 }
 
+//MARK: ENUMS
 enum Messages: String {
     case connection_error = "Ops!\n Verifique sua conexão\n e recarregue a página."
     case request_error = "Ops!\n Algo de errado aconteceu.\n Recarregue a página."
@@ -94,7 +95,6 @@ extension FeedPresenter {
             self.feedViewData = FeedViewData()
             self.feedViewData.status = feedNewsModel.status ?? ""
             self.feedViewData.totalResults = feedNewsModel.totalResults ?? 0
-            //self.feedViewData.articles = [ArticlesViewData]()
             
             for article in articlesModel {
                 var articleViewData = ArticlesViewData()
@@ -103,7 +103,7 @@ extension FeedPresenter {
                 articleViewData.description = article.description ?? ""
                 articleViewData.url = article.url ?? ""
                 articleViewData.urlToImage = article.urlToImage ?? ""
-                articleViewData.publishedAt = article.publishedAt ?? ""
+                articleViewData.publishedAt = Formatter().dateFormatter(dateToFormat: article.publishedAt)
                 articleViewData.content = article.content ?? ""
                 articleViewData.source = SourceViewData()
                 articleViewData.source.id = article.source?.id ?? ""
@@ -111,7 +111,7 @@ extension FeedPresenter {
                 
                 self.feedViewData.articles.append(articleViewData)
             }
-            return nil
+            return self.feedViewData
         }
         return nil
     }
